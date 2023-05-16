@@ -26,12 +26,28 @@ public class LibraryAppController {
         return libraryAppService.getAllBooks();
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<LibraryApp>get(@PathVariable Integer id){
-//        try {
-//        LibraryApp libraryApp=libraryAppService
-//        }catch (NoSuchElementException e){
-//            return new ResponseEntity<LibraryApp>(HttpStatus.NOT_FOUND)
-//        }
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<LibraryApp>getId(@PathVariable Integer id){
+        try {
+        LibraryApp libraryApp=libraryAppService.getId(id);
+        return new ResponseEntity<LibraryApp>(libraryApp,HttpStatus.OK);
+        }catch (NoSuchElementException e){
+            return new ResponseEntity<LibraryApp>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<LibraryApp>update(@RequestBody LibraryApp libraryApp,@PathVariable Integer id){
+        try {
+            LibraryApp existingBook=libraryAppService.getId(id);
+            libraryAppService.saveLibrary(libraryApp);
+            return  new ResponseEntity<>(HttpStatus.OK);
+        }catch (NoSuchElementException e ){
+            return new ResponseEntity<LibraryApp>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Integer id){
+        libraryAppService.delete(id);
+        return "КНИГА НОМЕР "+id+"Е ИЗТРИТА УСПЕШНО!";
+    }
 }
