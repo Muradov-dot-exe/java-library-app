@@ -11,6 +11,9 @@ import java.util.List;
 public class LibraryAppImpl implements LibraryAppService {
     @Autowired
     private StudentRepository studentRepository;
+    public LibraryApp getId(Integer id){
+        return studentRepository.findById(id).get();
+    }
     @Override
 public LibraryApp saveLibrary(LibraryApp libraryApp) {
         return studentRepository.save(libraryApp);

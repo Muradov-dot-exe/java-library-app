@@ -10,8 +10,6 @@ public class LibraryApp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String address;
     private String isbn;
     private String year;
     private String author;
@@ -31,21 +29,7 @@ public class LibraryApp {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
     public String getIsbn() {
         return isbn;
     }
