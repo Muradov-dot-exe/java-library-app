@@ -18,6 +18,9 @@ export default function LibraryTextFields() {
     margin: "auto",
     float: "right",
   };
+  const paperImage = {
+    float: "right",
+  };
   const [isbn, setIsbn] = useState("");
   const [id, setId] = useState("");
   const [author, setAuthor] = useState("");
@@ -154,8 +157,11 @@ export default function LibraryTextFields() {
                   Description:{book.description}
                   <br />
                   Image:{book.image}
-                  {/* <Grid spacing={3}>
-                    <img src={book.image} />
+                  {/* <Grid spacing={3} style={paperImage}>
+                    <img
+                      src={book.image}
+                      style={{ flex: 1, width: "100px", height: "100px" }}
+                    />
                   </Grid> */}
                 </Paper>
               );
