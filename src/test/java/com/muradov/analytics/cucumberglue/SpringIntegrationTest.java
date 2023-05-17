@@ -29,7 +29,7 @@ public class SpringIntegrationTest {
     private RestTemplate restTemplate = new RestTemplate();
     private String postUrl = "http://localhost";
 
-    private int postId = 0;
+    private String postId = "";
 
     @Given("I can create a new post")
     public void i_can_create_a_new_post() {
@@ -39,12 +39,11 @@ public class SpringIntegrationTest {
         assertTrue(!allPost.isEmpty());
     }
 
-    @Given("^I sending post to be created with id (.*) and title (.*) and content (.*) and content (.*) year: (.*) and image (.*)$")
+    @Given("^I sending post to be created with  title (.*) and content (.*) and content (.*) year: (.*) and image (.*)$")
 
-    public void i_sending_post( Integer book_id,String isbn, String author,String description,String year,String image) {
+    public void i_sending_post( String isbn, String author,String description,String year,String image) {
         String url = postUrl + ":" + port+"/library" + "/add";
         LibraryApp newPost = new LibraryApp();
-           newPost.setId(book_id);
         newPost.setIsbn(isbn);
         newPost.setAuthor(author);
         newPost.setDescription(description);
@@ -53,7 +52,7 @@ public class SpringIntegrationTest {
 
         LibraryApp post = restTemplate.postForObject(url, newPost, LibraryApp.class,HttpMethod.POST);
 
-        postId = post.getId();
+        postId = String.valueOf(post.getId());
         log.info(post);
         assertNotNull(post);
     }
