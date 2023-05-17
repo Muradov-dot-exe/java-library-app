@@ -174,6 +174,7 @@ export default function LibraryTextFields() {
                     <img
                       src={book.image}
                       style={{ flex: 1, width: "100px", height: "100px" }}
+                      alt="Book"
                     />
                   </Grid>
                 </Card>
