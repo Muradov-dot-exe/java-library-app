@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
-import { Button, Paper } from "@mui/material";
+import { Button, Card, Paper } from "@mui/material";
 import { Grid } from "@mui/material";
 
 export default function LibraryTextFields() {
@@ -41,6 +41,7 @@ export default function LibraryTextFields() {
       console.log("New Book added");
     });
   };
+
   const handleClickEdit = () => {
     fetch(`http://localhost:8080/library/${id}`, {
       method: "PUT",
@@ -50,13 +51,24 @@ export default function LibraryTextFields() {
       console.log("Book Updated");
     });
   };
+
+  const handleClickDelete = () => {
+    fetch(`http://localhost:8080/library/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(book),
+    }).then(() => {
+      console.log("Book Updated");
+    });
+  };
+
   useEffect(() => {
     fetch("http://localhost:8080/library/getAll")
       .then((res) => res.json())
       .then((result) => {
         setAddedBook(result);
       });
-  }, []);
+  });
 
   return (
     <>
@@ -122,6 +134,7 @@ export default function LibraryTextFields() {
                 variant="filled"
                 fullWidth
                 value={image}
+                required
                 onChange={(event) => setImage(event.target.value)}
               />
             </Grid>
@@ -141,7 +154,7 @@ export default function LibraryTextFields() {
           <Paper elevation={3} style={paperStyle}>
             {addedBook.map((book) => {
               return (
-                <Paper
+                <Card
                   elevation={6}
                   style={{ margin: "10px", padding: "15px", textAlign: "left" }}
                   key={book.id}
@@ -156,14 +169,14 @@ export default function LibraryTextFields() {
                   <br />
                   Description:{book.description}
                   <br />
-                  Image:{book.image}
-                  {/* <Grid spacing={3} style={paperImage}>
+                  Image:
+                  <Grid style={paperImage}>
                     <img
                       src={book.image}
                       style={{ flex: 1, width: "100px", height: "100px" }}
                     />
-                  </Grid> */}
-                </Paper>
+                  </Grid>
+                </Card>
               );
             })}
           </Paper>
@@ -188,6 +201,14 @@ export default function LibraryTextFields() {
               onClick={handleClickEdit}
             >
               Edit book
+            </Button>
+            &nbsp;
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClickDelete}
+            >
+              Delete book
             </Button>
           </Grid>
         </Paper>
