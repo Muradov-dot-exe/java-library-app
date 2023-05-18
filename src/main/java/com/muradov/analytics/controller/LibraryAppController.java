@@ -16,8 +16,9 @@ import java.util.NoSuchElementException;
 public class LibraryAppController {
     @Autowired
     private LibraryAppService libraryAppService;
-    @PostMapping("/add")
+    @PostMapping(value = "/add",consumes = "application/json",produces = "application/json")
     public String add(@RequestBody LibraryApp libraryApp){
+
         libraryAppService.saveLibrary(libraryApp);
         return "Добавена е нова книга";
     }
@@ -37,6 +38,7 @@ public class LibraryAppController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<LibraryApp>update(@RequestBody LibraryApp libraryApp,@PathVariable Integer id){
+
         try {
             LibraryApp existingBook=libraryAppService.getId(id);
             libraryAppService.saveLibrary(libraryApp);
