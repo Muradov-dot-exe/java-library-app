@@ -39,7 +39,7 @@ public class SpringIntegrationTest {
         assertTrue(!allPost.isEmpty());
     }
 
-    @Given("^I sending post to be created with  title (.*) and content (.*) and content (.*) year: (.*) and image (.*)$")
+    @Given("I sending post to be created with  title {string} and content {string} and content {string} year: {string} and image {string}")
 
     public void i_sending_post( String isbn, String author,String description,String year,String image) {
         String url = postUrl + ":" + port+"/library" + "/add";
@@ -51,6 +51,7 @@ public class SpringIntegrationTest {
         newPost.setImage(image);
 
         LibraryApp post = restTemplate.postForObject(url, newPost, LibraryApp.class,HttpMethod.POST);
+
 
         postId = String.valueOf(post.getId());
         log.info(post);
