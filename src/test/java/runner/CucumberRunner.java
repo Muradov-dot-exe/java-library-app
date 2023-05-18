@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(monochrome = true,
         features = "classpath:features",
         glue = {"com.muradov.analytics.cucumberglue"},
-        plugin = {"pretty", "json:build/cucumber-reports/cucumber.json"})
+        plugin = {"pretty", "json:build/cucumber.json"})
 
 public class CucumberRunner {
 }
