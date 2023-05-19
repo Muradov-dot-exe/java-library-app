@@ -6,6 +6,6 @@ Feature: Post functionality
     Then I should be able to see my newly created post
 
     Examples:
-      | isbn    | author          | description     |image|year|
-      | 12345   | New post title | New post content |aaaa |1212|
-      | new_ID  | Post title     | This is content  |aaa2 |bruh|
+      | isbn     | author         | description      |image                  |year|
+      | 111AAA   | Ivan Vazov     | A perfect book   |"POD IGOTO IMAGE LINK" |1000|
+      | 222AAA   | Hristo Botev   | A perfect book   |"POD IGOTO IMAGE LINK" |1000|
