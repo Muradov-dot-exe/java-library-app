@@ -1,11 +1,11 @@
-Feature: Book CRUD Operations
-  As a user of the book app
-  I want to be able to perform CRUD operations on books
-  So that I can manage book data effectively
+Feature: Post functionality
 
-  Scenario: Create a new book
-    Given the book data:
-      |isbn  | description    | author      |image       |year
-      |1312AA| Test Book      | Test Author |random image|1919
-    When I send a POST request to create the book
-    Then the book should be created successfully
+  Scenario Outline: As a customer I want to create a new post.
+    Given I can create a new post
+    And I sending post to be created with isbn :<isbn>, title <author> and content description <description> with image <image> and year <year>
+    Then I should be able to see my newly created post
+
+    Examples:
+      | isbn    | author          | description     |image|year|
+      | 12345   | New post title | New post content |aaaa |1212|
+      | new_ID  | Post title     | This is content  |aaa2 |bruh|

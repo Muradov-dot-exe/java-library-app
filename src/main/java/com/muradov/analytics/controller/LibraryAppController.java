@@ -17,10 +17,10 @@ public class LibraryAppController {
     @Autowired
     private LibraryAppService libraryAppService;
     @PostMapping("/add")
-    public String add(@RequestBody LibraryApp libraryApp){
+    public ResponseEntity<LibraryApp> createBook(@RequestBody LibraryApp libraryApp){
+         LibraryApp savedBook =libraryAppService.saveLibrary(libraryApp);
 
-        libraryAppService.saveLibrary(libraryApp);
-        return "Добавена е нова книга";
+        return new ResponseEntity<>(savedBook,HttpStatus.CREATED);
     }
     @GetMapping("/getAll")
     public List<LibraryApp>getAllBooks(){
