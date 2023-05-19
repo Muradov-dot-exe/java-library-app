@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 public class LibraryAppController {
     @Autowired
     private LibraryAppService libraryAppService;
-    @PostMapping(value = "/add",consumes = "application/json",produces = "application/json")
+    @PostMapping("/add")
     public String add(@RequestBody LibraryApp libraryApp){
 
         libraryAppService.saveLibrary(libraryApp);

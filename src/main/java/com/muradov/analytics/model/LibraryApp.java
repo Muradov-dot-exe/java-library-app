@@ -22,6 +22,9 @@ public class LibraryApp {
     public LibraryApp() {
     }
 
+    public LibraryApp(String isbn, String description, String author, String image, String year) {
+    }
+
     public int getId() {
         return id;
     }

@@ -1,12 +1,11 @@
-Feature: Verify get all request in the Api
+Feature: Book CRUD Operations
+  As a user of the book app
+  I want to be able to perform CRUD operations on books
+  So that I can manage book data effectively
 
-
-  Scenario Outline: As a customer I want to create a new post.
-    Given I can create a new post
-    And I sending post to be created with id <book_id> , title <isbn> and content <author> and content <description> year: <year> and image <image>
-    Then I should be able to see my newly created post
-
-    Examples:
-     |book_id  | isbn          | author      |description|year|image |
-      |1|1a    |Peter   | Masterpiece|1918| imagine |
-
+  Scenario: Create a new book
+    Given the book data:
+      |isbn  | description    | author      |image       |year
+      |1312AA| Test Book      | Test Author |random image|1919
+    When I send a POST request to create the book
+    Then the book should be created successfully
