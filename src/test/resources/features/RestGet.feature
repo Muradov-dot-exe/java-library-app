@@ -6,6 +6,6 @@ Feature: Post functionality
     Then I should be able to see my newly created post
 
     Examples:
-      | isbn     | author         | description      |year  |image|
-      | 111AAA   | Ivan Vazov     | A perfect book   |123   |imageLink|
-      | 222AAA   | Hristo Botev   | A perfect book   |123   |ImageLink|
+      | isbn     | author              | description         |year   |image|
+      | 333AABB  | Dimcho Debelyanov   | Amazing Author      |1919   |imageLink|
+      | 444AABB  | Geo Milev           | Magnificent Author  |1920   |ImageLink|
