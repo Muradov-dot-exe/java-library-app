@@ -17,9 +17,10 @@ public class LibraryAppController {
     @Autowired
     private LibraryAppService libraryAppService;
     @PostMapping("/add")
-    public String add(@RequestBody LibraryApp libraryApp){
-        libraryAppService.saveLibrary(libraryApp);
-        return "Добавена е нова книга";
+    public ResponseEntity<LibraryApp> createBook(@RequestBody LibraryApp libraryApp){
+         LibraryApp savedBook =libraryAppService.saveLibrary(libraryApp);
+
+        return new ResponseEntity<>(savedBook,HttpStatus.CREATED);
     }
     @GetMapping("/getAll")
     public List<LibraryApp>getAllBooks(){
@@ -37,6 +38,7 @@ public class LibraryAppController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<LibraryApp>update(@RequestBody LibraryApp libraryApp,@PathVariable Integer id){
+
         try {
             LibraryApp existingBook=libraryAppService.getId(id);
             libraryAppService.saveLibrary(libraryApp);

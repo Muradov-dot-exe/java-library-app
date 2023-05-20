@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.net.URLEncoder;
+
 @Entity
 public class LibraryApp {
     @Id
@@ -15,10 +17,12 @@ public class LibraryApp {
     private String author;
     private String image;
     private  String description;
-    private String createdAt;
-    private String updatedAt;
+
 
     public LibraryApp() {
+    }
+
+    public LibraryApp(String isbn, String description, String author, String image, String year) {
     }
 
     public int getId() {
@@ -70,20 +74,6 @@ public class LibraryApp {
         this.description = description;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
 }
